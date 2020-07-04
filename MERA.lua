@@ -97,7 +97,7 @@ echo -e "\e[36m"
 done
 ]])  
 file:close()  
-file = io.open("RUN", "w")  
+file = io.open("BJ", "w")  
 file:write([[
 #!/usr/bin/env bash
 cd $HOME/MERA
