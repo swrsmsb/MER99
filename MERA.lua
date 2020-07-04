@@ -10066,8 +10066,6 @@ Text = '🔖┇ تم طرد البوت من المجموعه\n'..
 '\n🆔┇ ايدي المجموعه {`'..IdChat..'`}'..
 '\n'
 sendText(SUDO,Text,0,'md')
-
-
 end,nil) 
 end
 end
@@ -10240,11 +10238,6 @@ if data.username_ then
 database:set(bot_id..'user:Name'..msg.sender_user_id_,(data.username_))
 end
 --------------------------------------------------------------------------------------------------------------
-if tonumber(data.id_) == tonumber(bot_id) then
-return false
-end
-end,nil)   
-end
 elseif (data.ID == "UpdateMessageEdited") then
 local msg = data
 tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.message_id_)},function(extra, result, success)
@@ -10403,7 +10396,6 @@ database:sadd(bot_id..'Chek:Groups',v)
 end 
 end,nil)
 end
-
 elseif (data.ID == "UpdateMessageSendSucceeded") then
 local msg = data.message_
 local text = msg.content_.text_
