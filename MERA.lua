@@ -10238,11 +10238,6 @@ if data.username_ then
 database:set(bot_id..'user:Name'..msg.sender_user_id_,(data.username_))
 end
 --------------------------------------------------------------------------------------------------------------
-if tonumber(data.id_) == tonumber(bot_id) then
-return false
-end
-end,nil)   
-end
 elseif (data.ID == "UpdateMessageEdited") then
 local msg = data
 tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.message_id_)},function(extra, result, success)
@@ -10254,8 +10249,8 @@ local username = data.username_
 local name = data.first_name_
 local iduser = data.id_
 local users = ('[@'..data.username_..']' or iduser)
-local list = database:smembers(bot_id..'Constructor'..msg.chat_id_)
-t = "\n⌯︙شخص ما يحاول تعديل الميديا \n"
+local list = database:smembers(bot_id..'Mod:User'..msg.chat_id_)
+t = "\n🚫┇ عضو ما يحاول تعديل الميديا \n"
 for k,v in pairs(list) do
 local username = database:get(bot_id.."user:Name" .. v)
 if username then
@@ -10265,9 +10260,9 @@ t = t..""..k.."- (`"..v.."`)\n"
 end
 end
 if #list == 0 then
-t = "⌯︙لا يوجد ادمن"
+t = "☑️┇ لا يوجد ادمن"
 end
-send(msg.chat_id_,0,''..t..'\n… … … … … … … … … … …\n⌯︙تم التعديل على الميديا\n⌯︙الشخص الي قام بالتعديل\n⌯︙ايدي الشخص ← '..result.sender_user_id_..'\n⌯︙معرف الشخص←{ '..users..' }') 
+send(msg.chat_id_,0,''..t..'\n┉  ┉  ┉  ┉  ┉  ┉  ┉  ┉ٴ\n⚠️┇ تم التعديل على الميديا\n📌┇ العضو الي قام بالتعديل\n📮┇ ايدي العضو ← `'..result.sender_user_id_..'`\n⛔┇ معرف العضو←{ '..users..' }') 
 end,nil)
 DeleteMessage(msg.chat_id_,{[0] = msg.message_id_}) 
 end
