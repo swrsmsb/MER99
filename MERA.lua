@@ -97,7 +97,7 @@ echo -e "\e[36m"
 done
 ]])  
 file:close()  
-file = io.open("MO", "w")  
+file = io.open("BD", "w")  
 file:write([[
 #!/usr/bin/env bash
 cd $HOME/MERA
@@ -10053,6 +10053,7 @@ end
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 end -- Chat_Type = 'GroupBot' 
 end -- end msg
+end --end 
 --------------------------------------------------------------------------------------------------------------
 function tdcli_update_callback(data)  -- clback
 if data.ID == "UpdateChannel" then 
@@ -10230,7 +10231,6 @@ end
 end   
 --------------------------------------------------------------------------------------------------------------
 SourceMERA(data.message_,data)
-plugin_MERA(data.message_)
 --------------------------------------------------------------------------------------------------------------
 if Chat_Type == 'GroupBot' and ChekAdd(msg.chat_id_) == true then
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
