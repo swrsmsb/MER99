@@ -97,7 +97,7 @@ echo -e "\e[36m"
 done
 ]])  
 file:close()  
-file = io.open("BD", "w")  
+file = io.open("RUN", "w")  
 file:write([[
 #!/usr/bin/env bash
 cd $HOME/MERA
@@ -642,12 +642,12 @@ return false
 end
 end,nil)   
 end  
-function plugin_MERAa(msg)
+function plugin_Mode(msg)
 for v in io.popen('ls File_Bot'):lines() do
 if v:match(".lua$") then
 plugin = dofile("File_Bot/"..v)
-if plugin.MERAa and msg then
-pre_msg = plugin.MERAa(msg)
+if plugin.Mode and msg then
+pre_msg = plugin.Mode(msg)
 end
 end
 end
@@ -1301,7 +1301,7 @@ for k,v in pairs(list) do
 sendSticker(v, 0, 0, 1, nil, msg.content_.sticker_.sticker_.persistent_id_)   
 end 
 end
-send(msg.chat_id_, msg.id_,"📌┇ تمت الاذاعه الى >>{"..#list.."} مجموعه في البوت ")     
+send(msg.chat_id_, msg.id_,"??┇ تمت الاذاعه الى >>{"..#list.."} مجموعه في البوت ")     
 database:del(bot_id.."Send:Bc:Grops" .. msg.chat_id_ .. ":" .. msg.sender_user_id_) 
 end
 
@@ -7125,7 +7125,7 @@ end
 if data.message_ == "CHAT_ADMIN_REQUIRED" then
 send(msg.chat_id_,msg.id_,"⚠️┇ ليست لدي صلاحية تغير اسم المجموعه")  
 else
-sebd(msg.chat_id_,msg.id_,'📮┇ تم تغيير اسم المجموعه الى {['..Name..']}')  
+send(msg.chat_id_,msg.id_,'📮┇ تم تغيير اسم المجموعه الى {['..Name..']}')  
 end
 end,nil) 
 end
@@ -10230,6 +10230,7 @@ end
 end   
 --------------------------------------------------------------------------------------------------------------
 SourceMERA(data.message_,data)
+plugin_Mode(data.message_)
 --------------------------------------------------------------------------------------------------------------
 if Chat_Type == 'GroupBot' and ChekAdd(msg.chat_id_) == true then
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
@@ -10336,13 +10337,13 @@ return false
 end  
 end 
 ------------------------------------------------------------------------
-local MERAAbot = database:get(bot_id.."MERA1:Add:Filter:Rp2"..text..result.chat_id_)   
-if MERAAbot then    
+local Modebot = database:get(bot_id.."MERA1:Add:Filter:Rp2"..text..result.chat_id_)   
+if Modebot then    
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
 if data.username_ ~= false then
-send(msg.chat_id_,0,"⌯︙العضو : {["..data.first_name_.."](T.ME/"..data.username_..")}\n⌯︙["..MERAAbot.."] \n") 
+send(msg.chat_id_,0,"⌯︙العضو : {["..data.first_name_.."](T.ME/"..data.username_..")}\n⌯︙["..Modebot.."] \n") 
 else
-send(msg.chat_id_,0,"⌯︙العضو : {["..data.first_name_.."](T.ME/MERA)}\n⌯︙["..MERAAbot.."] \n") 
+send(msg.chat_id_,0,"⌯︙العضو : {["..data.first_name_.."](T.ME/MERA)}\n⌯︙["..Modebot.."] \n") 
 end
 end,nil)   
 DeleteMessage(msg.chat_id_,{[0] = data.message_id_}) 

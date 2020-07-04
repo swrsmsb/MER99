@@ -4,7 +4,7 @@ install() {
 rm -rf $HOME/.telegram-cli
 sudo apt-get update -y
 sudo apt-get upgrade -y
-sudo apt-get install software-properties-comBDn -y
+sudo apt-get install software-properties-common -y
 sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y
 sudo luarocks install luasocket
 sudo luarocks install luasec
@@ -18,11 +18,11 @@ sudo apt-get install screen -y
 sudo apt-get install libstdc++6 -y
 sudo apt-get install lua-lgi -y
 sudo apt-get install libnotify-dev -y
-sudo chBDd +x tg
+sudo chmod +x tg
 lua MERA.lua
-sudo chBDd +x MERA
-sudo chBDd +x ./BD
-./BD
+sudo chmod +x MERA
+sudo chmod +x ./RUN
+./RUN
 }
 if [ "$1" = "install" ]; then
 install
@@ -31,9 +31,9 @@ if [ ! -f ./tg ]; then
 echo "Tg Is Not Found"
 exit 1
 fi
-sudo chBDd +x tg
+sudo chmod +x tg
 lua MERA.lua
-sudo chBDd +x MERA
-sudo chBDd +x ./
-./BD
+sudo chmod +x MERA
+sudo chmod +x ./RUN
+./RUN
 fi
